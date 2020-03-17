@@ -25,9 +25,9 @@ import (
 	"errors"
 
 	"github.com/BurntSushi/toml"
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
-	"github.com/dedis/onet/simul/monitor"
+	"go.dedis.ch/onet"
+	"go.dedis.ch/onet/log"
+	"go.dedis.ch/onet/simul/monitor"
 	"bls-ftcosi/pbft/protocol"
 	"bls-ftcosi/cothority/protocols/byzcoin/blockchain"
 	"bls-ftcosi/cothority/protocols/byzcoin/blockchain/blkparser"
