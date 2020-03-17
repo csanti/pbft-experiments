@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
-	"github.com/dedis/kyber/group/edwards25519"
+	"go.dedis.ch/onet"
+	"go.dedis.ch/onet/log"
+	"go.dedis.ch/kyber/group/edwards25519"
 )
 
 var tSuite = edwards25519.NewBlakeSHA256Ed25519()

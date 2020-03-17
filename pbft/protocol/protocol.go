@@ -10,11 +10,11 @@ import (
 	"fmt"
 	"encoding/json"
 
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
-	"github.com/dedis/onet/network"
-	"github.com/dedis/kyber"
-	"github.com/dedis/kyber/sign/schnorr"
+	"go.dedis.ch/onet"
+	"go.dedis.ch/onet/log"
+	"go.dedis.ch/onet/network"
+	"go.dedis.ch/kyber"
+	"go.dedis.ch/kyber/sign/schnorr"
 
 
 	"crypto/sha512"
