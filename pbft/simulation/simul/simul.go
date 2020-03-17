@@ -2,7 +2,7 @@ package main
 
 import (
 	// Service needs to be imported here to be instantiated.
-	//_ "go.dedis.ch/cothority_template/service"
+	_ "github.com/csanti/pbft-experiments/pbft/simulation"
 	"go.dedis.ch/onet/simul"
 )
 

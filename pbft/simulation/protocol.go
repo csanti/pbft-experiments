@@ -1,4 +1,4 @@
-package main
+package simulation
 
 /*
 The simulation-file can be used with the `cothority/simul` and be run either
@@ -28,9 +28,9 @@ import (
 	"go.dedis.ch/onet"
 	"go.dedis.ch/onet/log"
 	"go.dedis.ch/onet/simul/monitor"
-	"bls-ftcosi/pbft/protocol"
-	"bls-ftcosi/cothority/protocols/byzcoin/blockchain"
-	"bls-ftcosi/cothority/protocols/byzcoin/blockchain/blkparser"
+	"github.com/csanti/pbft-experiments/pbft/protocol"
+	"github.com/csanti/pbft-experiments/cothority/protocols/byzcoin/blockchain"
+	"github.com/csanti/pbft-experiments/cothority/protocols/byzcoin/blockchain/blkparser"
 )
 
 func init() {
@@ -57,8 +57,8 @@ func NewSimulationProtocol(config string) (onet.Simulation, error) {
 }
 
 var magicNum = [4]byte{0xF9, 0xBE, 0xB4, 0xD9}
-var blocksPath = "/users/csbenz/blocks" // "/home/christo/.bitcoin/blocks"
-const ReadFirstNBlocks = 66000
+var blocksPath = "c:/projects/blocks"
+const ReadFirstNBlocks = 10 //66000
 var wantednTxs = 10000
 
 // Setup implements onet.Simulation.
