@@ -43,6 +43,7 @@ type SimulationProtocol struct {
 	NNodes				int
 	FailingSubleaders	int
 	FailingLeafs		int
+	LoadBlock           bool
 }
 
 // NewSimulationProtocol is used internally to register the simulation (see the init()
@@ -119,21 +120,27 @@ var defaultTimeout = 120 * time.Second
 func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 	log.SetDebugVisible(1)
 
-	transactions, err := loadBlocks()
-	if err != nil {
-		return err
+	binaryBlock := []byte("block data")
+	if s.LoadBlock {
+		log.Lvl1("LoadBlock is true, loading block from file")
+		transactions, err := loadBlocks()
+		if err != nil {
+			return err
+		}
+
+		log.Lvl1("Run got", len(transactions), "transactions")
+		
+		block, err := GetBlock(3000, transactions, "0", "0", 0)
+		if err != nil {
+			return err
+		}
+		binaryBlock, err = block.MarshalBinary()
+		if err != nil {
+			return err
+		}
 	}
 
-	log.Lvl1("Run got", len(transactions), "transactions")
-	
-	block, err := GetBlock(3000, transactions, "0", "0", 0)
-	if err != nil {
-		return err
-	}
-	binaryBlock, err := block.MarshalBinary()
-	if err != nil {
-		return err
-	}
+
 
 	size := config.Tree.Size()
 	log.Lvl1("Size is:", size, "rounds:", s.Rounds)
