@@ -23,6 +23,7 @@ import (
 	"fmt"
 	"time"
 	"errors"
+	"math/rand"
 
 	"github.com/BurntSushi/toml"
 	"github.com/csanti/onet"
@@ -44,6 +45,7 @@ type SimulationProtocol struct {
 	FailingSubleaders	int
 	FailingLeafs		int
 	LoadBlock           bool
+	BlockSize			int // in bytes
 }
 
 // NewSimulationProtocol is used internally to register the simulation (see the init()
@@ -120,7 +122,8 @@ var defaultTimeout = 120 * time.Second
 func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 	log.SetDebugVisible(1)
 
-	binaryBlock := []byte("block data")
+	var binaryBlock []byte
+
 	if s.LoadBlock {
 		log.Lvl1("LoadBlock is true, loading block from file")
 		transactions, err := loadBlocks()
@@ -138,9 +141,11 @@ func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 		if err != nil {
 			return err
 		}
+	} else {
+		log.Lvl1("LoadBlock is false, generating random block of size ", s.BlockSize)
+		binaryBlock := make([]byte, s.BlockSize)
+		rand.Read(binaryBlock)
 	}
-
-
 
 	size := config.Tree.Size()
 	log.Lvl1("Size is:", size, "rounds:", s.Rounds)
