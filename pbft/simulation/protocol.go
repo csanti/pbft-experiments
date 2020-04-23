@@ -143,10 +143,10 @@ func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 		}
 	} else {
 		log.Lvl1("LoadBlock is false, generating random block of size ", s.BlockSize)
-		binaryBlock := make([]byte, s.BlockSize)
+		binaryBlock = make([]byte, s.BlockSize)
 		rand.Read(binaryBlock)
 	}
-
+	
 	size := config.Tree.Size()
 	log.Lvl1("Size is:", size, "rounds:", s.Rounds)
 	log.Lvl1("Simulating for", s.Hosts, "nodes in ", s.Rounds, "round")
