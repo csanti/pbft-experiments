@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"errors"
 
-	"github.com/dedis/kyber"
-	"github.com/dedis/kyber/sign/bls"
-	"github.com/dedis/kyber/pairing"
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
-	"github.com/dedis/onet/network"
-	"github.com/dedis/onet/simul/monitor"
+	"go.dedis.ch/kyber"
+	"go.dedis.ch/kyber/sign/bls"
+	"go.dedis.ch/kyber/pairing"
+	"github.com/csanti/onet"
+	"github.com/csanti/onet/log"
+	"github.com/csanti/onet/network"
+	"github.com/csanti/onet/simul/monitor"
 
 )
 

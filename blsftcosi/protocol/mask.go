@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/dedis/kyber"
-	"github.com/dedis/kyber/pairing"
-	"github.com/dedis/onet/log"
+	"go.dedis.ch/kyber"
+	"go.dedis.ch/kyber/pairing"
+	"github.com/csanti/onet/log"
 
 )
 

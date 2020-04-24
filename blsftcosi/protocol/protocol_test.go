@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/dedis/kyber"
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
-	"github.com/dedis/kyber/pairing"
+	"go.dedis.ch/kyber"
+	"github.com/csanti/onet"
+	"github.com/csanti/onet/log"
+	"go.dedis.ch/kyber/pairing"
 	//"github.com/stretchr/testify/require"
 
 )

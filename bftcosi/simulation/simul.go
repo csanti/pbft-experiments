@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/dedis/onet/simul"
+	"github.com/csanti/onet/simul"
 )
 
 func main() {

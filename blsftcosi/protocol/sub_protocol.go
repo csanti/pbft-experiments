@@ -8,11 +8,11 @@ import (
 	"time"
 	"encoding/json"
 
-	"github.com/dedis/kyber"
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
-	"github.com/dedis/kyber/pairing"
-	"github.com/dedis/kyber/pairing/bn256"
+	"go.dedis.ch/kyber"
+	"github.com/csanti/onet"
+	"github.com/csanti/onet/log"
+	"go.dedis.ch/kyber/pairing"
+	"go.dedis.ch/kyber/pairing/bn256"
 
 )
 

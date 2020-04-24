@@ -8,9 +8,9 @@ import (
 	"crypto/cipher"
 	"crypto/sha512"
 
-	"github.com/dedis/kyber/pairing"	
-	"github.com/dedis/kyber"
-	"github.com/dedis/onet"
+	"go.dedis.ch/kyber/pairing"	
+	"go.dedis.ch/kyber"
+	"github.com/csanti/onet"
 )
 
 // DefaultProtocolName can be used from other packages to refer to this protocol.

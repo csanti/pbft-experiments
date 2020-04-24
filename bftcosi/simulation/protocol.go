@@ -22,19 +22,20 @@ In the Node-method you can read the files that have been created by the
 import (
 	"errors"
 	//"strconv"
+	"math/rand"
 
 	"github.com/BurntSushi/toml"
-	"bls-ftcosi/bftcosi/protocol"
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
+	"github.com/csanti/pbft-experiments/bftcosi/protocol"
+	"github.com/csanti/onet"
+	"github.com/csanti/onet/log"
 
-	"github.com/dedis/onet/simul/monitor"
+	"github.com/csanti/onet/simul/monitor"
 
 	"fmt"
 	"time"
 
-	"bls-ftcosi/cothority/protocols/byzcoin/blockchain"
-	"bls-ftcosi/cothority/protocols/byzcoin/blockchain/blkparser"
+	"github.com/csanti/pbft-experiments/cothority/protocols/byzcoin/blockchain"
+	"github.com/csanti/pbft-experiments/cothority/protocols/byzcoin/blockchain/blkparser"
 )
 
 var magicNum = [4]byte{0xF9, 0xBE, 0xB4, 0xD9}
@@ -55,6 +56,8 @@ type SimulationProtocol struct {
 	NSubtrees int
 	FailingSubleaders int
 	FailingLeafs int
+	LoadBlock           bool
+	BlockSize			int // in bytes
 }
 
 // NewSimulationProtocol is used internally to register the simulation (see the init()
@@ -141,20 +144,29 @@ var defaultTimeout = 120 * time.Second
 // Run implements onet.Simulation.
 func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 
-	transactions, err := loadBlocks()
-	if err != nil {
-		return err
-	}
+	var binaryBlock []byte
 
-	log.Lvl1("Run got", len(transactions), "transactions")
+	if s.LoadBlock {
+		log.Lvl1("LoadBlock is true, loading block from file")
+		transactions, err := loadBlocks()
+		if err != nil {
+			return err
+		}
 
-	block, err := GetBlock(3000, transactions, "0", "0", 0)
-	if err != nil {
-		return err
-	}
-	binaryBlock, err := block.MarshalBinary()
-	if err != nil {
-		return err
+		log.Lvl1("Run got", len(transactions), "transactions")
+		
+		block, err := GetBlock(3000, transactions, "0", "0", 0)
+		if err != nil {
+			return err
+		}
+		binaryBlock, err = block.MarshalBinary()
+		if err != nil {
+			return err
+		}
+	} else {
+		log.Lvl1("LoadBlock is false, generating random block of size ", s.BlockSize)
+		binaryBlock = make([]byte, s.BlockSize)
+		rand.Read(binaryBlock)
 	}
 
 

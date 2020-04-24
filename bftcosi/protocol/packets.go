@@ -5,10 +5,10 @@ import (
 	"errors"
 	"time"
 
-	"github.com/dedis/kyber"
-	"github.com/dedis/onet"
+	"go.dedis.ch/kyber"
+	"github.com/csanti/onet"
 
-	"github.com/dedis/onet/network"
+	"github.com/csanti/onet/network"
 )
 
 func init() {

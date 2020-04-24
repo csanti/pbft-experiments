@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/dedis/cothority"
-	"github.com/dedis/onet"
-	"github.com/dedis/onet/log"
+	"github.com/csanti/onet"
+	"github.com/csanti/onet/log"
 	"github.com/stretchr/testify/assert"
 )
 

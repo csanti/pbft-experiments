@@ -1,9 +1,11 @@
-Simulation = "BFTCosiSimul"
-Servers = 8
-Bf = 139
-Rounds = 1
+Simulation = "BlsFtCosiProtocol"
+Servers = 2
+Rounds = 10
 CloseWait = 6000
-Suite = "Ed25519"
+Suite = "bn256.g2"
+Tags = "vartime"
+LoadBlock = false
+BlockSize = 1000000
 
-Hosts, NSubtrees, FailingSubleaders,FailingLeafs
-140, 2, 0, 0
+Depth, Hosts, NSubTrees, FailingSubleaders, FailingLeafs
+2, 5, 3, 0, 0

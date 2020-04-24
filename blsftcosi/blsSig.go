@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/dedis/kyber/sign/bls"
-	"github.com/dedis/kyber/pairing/bn256"
-	"github.com/dedis/kyber/util/random"
+	"go.dedis.ch/kyber/sign/bls"
+	"go.dedis.ch/kyber/pairing/bn256"
+	"go.dedis.ch/kyber/util/random"
 )
 
 func testBLS() {
