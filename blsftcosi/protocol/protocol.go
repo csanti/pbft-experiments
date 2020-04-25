@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"sync"
 	"time"
-	"encoding/json"
+	//"encoding/json"
 
 	"github.com/csanti/onet/network"
 	"github.com/csanti/onet"
@@ -86,12 +86,13 @@ var ThePairingSuite = bn256.NewSuite()
 func NewDefaultProtocol(n *onet.TreeNodeInstance) (onet.ProtocolInstance, error) {
 	vf := func(msg, data []byte) bool {
 		// Simulate verification function by sleeping
+		/*
 		b, _ := json.Marshal(msg)
 		m := time.Duration(len(b) / (500 * 1024))  //verification of 150ms per 500KB simulated
 		waitTime := 150 * time.Millisecond * m
 		log.Lvl3("Verifying for", waitTime)
 		time.Sleep(waitTime)  
-
+		*/
 		return true 
 	}
 	return NewBlsFtCosi(n, vf, DefaultSubProtocolName, ThePairingSuite)
