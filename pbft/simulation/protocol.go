@@ -153,7 +153,10 @@ func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 
 	for round := 0; round < s.Rounds; round++ {
 		log.Lvl1("Starting round", round)
-		fullRound := monitor.NewTimeMeasure("fullRound")
+		var fullRound *monitor.TimeMeasure
+		if round > 0 {
+			fullRound = monitor.NewTimeMeasure("fullRound")
+		}
 
 		pi, err := config.Overlay.CreateProtocol(protocol.DefaultProtocolName, config.Tree, onet.NilServiceID)
 		if err != nil {
@@ -176,8 +179,9 @@ func (s *SimulationProtocol) Run(config *onet.SimulationConfig) error {
 		case <-time.After(defaultTimeout * 2):
 			fmt.Errorf("Leader never got enough final replies, timed out")
 		}
-
-		fullRound.Record()
+		if round > 0 {
+			fullRound.Record()
+		}
 	}
 	return nil
 }
