@@ -207,7 +207,7 @@ loop:
 	if !(nReceivedPrepareMessages >= nRepliesThreshold) {
 		errors.New("node didn't receive enough prepare messages. Stopping.")
 	} else {
-		log.Lvl1(pbft.ServerIdentity(), "Received enough prepare messages (> 2/3 + 1):", nReceivedPrepareMessages, "/", pbft.nNodes)
+		log.Lvl2(pbft.ServerIdentity(), "Received enough prepare messages (> 2/3 + 1):", nReceivedPrepareMessages, "/", pbft.nNodes)
 	}
 
 	//digest := sha512.Sum512(pbft.Msg)
@@ -270,7 +270,7 @@ replyLoop:
 				}
 
 				receivedReplies++
-				log.Lvl1("Leader got one reply, total received is now", receivedReplies, "out of", nRepliesThreshold, "needed.")
+				log.Lvl2("Leader got one reply, total received is now", receivedReplies, "out of", nRepliesThreshold, "needed.")
 				
 			case <-time.After(defaultTimeout * 2):
 				// wait a bit longer than the protocol timeout
