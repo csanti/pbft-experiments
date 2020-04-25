@@ -4,7 +4,8 @@ Rounds = 10
 CloseWait = 6000
 Suite = "Ed25519"
 LoadBlock = false
-BlockSize = 10000000
+BlockSize = 10000
+Delay = 50000
 
 Hosts, BF, FailingSubleaders, FailingLeafs
 5, 4, 0, 0

@@ -1,0 +1,45 @@
+Simulation = "BlsFtCosiProtocol"
+Servers = 10
+Rounds = 10
+CloseWait = 6000
+Suite = "bn256.g2"
+Tags = "vartime"
+FailingSubleaders = 0
+FailingLeafs = 0
+Depth = 2
+LoadBlock = false
+Bandwidth = 35
+Delay = 100
+BlockSize = 2000000
+
+Hosts, NSubTrees
+2, 1
+4, 1
+7, 1
+10, 1
+15, 1
+20, 2
+25, 2
+30, 3
+35, 3
+40, 4
+45, 4
+50, 5
+55, 5
+60, 6
+65, 6
+70, 7
+75, 7
+80, 8
+85, 8
+90, 9
+95, 9
+100, 10
+150, 15
+200, 20
+250, 25
+300, 30
+350, 35
+400, 40
+450, 45
+500, 50
