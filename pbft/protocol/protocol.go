@@ -70,7 +70,7 @@ func NewProtocol(n *onet.TreeNodeInstance) (onet.ProtocolInstance, error) {
 		m := time.Duration(len(b) / (500 * 1024))  //verification of 150ms per 500KB simulated
 		waitTime := 150 * time.Millisecond * m
 		log.Lvl3("Verifying for", waitTime)
-		time.Sleep(waitTime)  
+		//time.Sleep(waitTime)  
 
 		return true 
 	}
